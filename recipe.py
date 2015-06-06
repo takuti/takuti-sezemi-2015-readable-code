@@ -16,6 +16,7 @@ def main():
     recipes = map(lambda recipe: recipe.rstrip(), f.readlines())
     for r in recipes:
       print r
+    f.close()
   except IOError:
     print 'IOError: file `%s` does not exist' % recipe_filename
 
