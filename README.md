@@ -6,6 +6,16 @@ Python
 
 ### 実行方法
 
+以下のように各行に1つレシピ名を書いたファイルをレシピデータとします。
+
 ```
-$ python recipe.py
+オムライス
+カレーライス
+Awesome recipe name
+```
+
+そのファイルの名前を引数で渡して実行することで、レシピが表示されます。
+
+```
+$ python recipe.py ${recipe-filename}
 ```
