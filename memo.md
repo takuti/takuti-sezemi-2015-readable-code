@@ -1,4 +1,4 @@
-## 仕様3
+## 仕様3 & 4
 
 ### その1
 
@@ -61,3 +61,26 @@ except IOError:
 #### 一言説明
 
 ネストを浅くする
+
+### その3
+
+#### 実装
+
+https://github.com/takuti/takuti-sezemi-2015-readable-code/commit/3622438f137da8e4028e4fd63a01859d013cff13
+
+#### どうしてリーダブル？
+
+個人開発ではファイルポインタは `f` などという慣例的な変数名をつけがちだが、今回は以下のように変数名が何を指しているか分かることを意識した。
+
+```python
+recipe_file = open(recipe_filename, 'r')
+```
+
+また、対応する変数同士の命名に英語的な意味を含ませることで対応をクリアにした。
+
+1. `recipe_filename` のファイルポインタは `recipe_file`
+2. `recipes` のイテレーション変数は `recipe`
+
+#### 一言説明
+
+自己説明的な変数名
