@@ -14,6 +14,7 @@ def main():
     recipe_file = open(recipe_filename, 'r')
     # cut the tail '\n', and create recipe list
     recipes = map(lambda recipe: recipe.rstrip(), recipe_file.readlines())
+    recipe_id=1
     for recipe in recipes:
       print recipe
     recipe_file.close()
