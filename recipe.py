@@ -4,11 +4,12 @@ import sys
 
 def main():
   argc = len(sys.argv)
-  if argc != 3:
+  if argc < 2 or argc >3:
     sys.exit('Error: `$ python recipe.py ${recipe-filename}` (recipe_id)')
 
   recipe_filename = sys.argv[1]
-  get_recipe_id = sys.argv[2]
+  if argc ==3:
+    get_recipe_id = sys.argv[2]
 
   # read/print all recipes from recipe-data-file
   try:
@@ -17,11 +18,10 @@ def main():
     recipes = map(lambda recipe: recipe.rstrip(), recipe_file.readlines())
     recipe_id=1
     for recipe in recipes:
-      #print 'get_recipe_id',get_recipe_id
-      #print 'recipe_id',recipe_id
-      #print type(get_recipe_id)
-      #print type(recipe_id)
-      if int(get_recipe_id) == recipe_id: 
+      if argc == 3:
+        if int(get_recipe_id) == recipe_id: 
+          print str(recipe_id)+': '+recipe
+      else:
         print str(recipe_id)+': '+recipe
       recipe_id+=1
     recipe_file.close()
