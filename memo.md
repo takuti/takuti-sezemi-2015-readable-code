@@ -1,6 +1,6 @@
-## メモ
+## 仕様3
 
-### 仕様3
+### その1
 
 #### 実装
 
@@ -17,6 +17,47 @@ if argc != 2:
   sys.exit('Error: `$ python recipe.py ${recipe-filename}`')
 ```
 
-#### この書き方の一言説明
+また、openではReadであれば `r` の指定を省略できるが、あえて省略しないことでファイル読み込みであることを明示している。
+
+```python
+open(recipe_filename, 'r')
+```
+
+#### 一言説明
 
 自己説明的なコード？
+
+### その2
+
+#### 実装
+
+https://github.com/takuti/takuti-sezemi-2015-readable-code/commit/ae957ed94b5832823db06ab81d2f578695880a33
+
+#### どうしてリーダブル？
+
+ファイルの読み書きは `with` を使って以下のように書くことができる。
+
+```python
+with open(recipe_filename, 'r') as f:
+  # cut the tail '\n', and create recipe list
+  recipes = map(lambda recipe: recipe.rstrip(), f.readlines())
+  for r in recipes:
+    print r
+```
+
+しかし、try-exceptによるファイル読み込み時の例外処理を実装するとネストが深くなってしまうので、あえて丁寧にファイルオープンをする。
+
+```python
+try:
+  f = open(recipe_filename, 'r')
+  # cut the tail '\n', and create recipe list
+  recipes = map(lambda recipe: recipe.rstrip(), f.readlines())
+  for r in recipes:
+    print r
+except IOError:
+  print 'IOError: file `%s` does not exist' % recipe_filename
+```
+
+#### 一言説明
+
+ネストを浅くする
