@@ -16,7 +16,8 @@ def main():
     recipes = map(lambda recipe: recipe.rstrip(), recipe_file.readlines())
     recipe_id=1
     for recipe in recipes:
-      print recipe
+      print str(recipe_id)+': '+recipe
+      recipe_id+=1
     recipe_file.close()
   except IOError:
     print 'IOError: file `%s` does not exist' % recipe_filename
