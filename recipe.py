@@ -16,18 +16,18 @@ def main():
     recipe_file = open(recipe_filename, 'r')
     # cut the tail '\n', and create recipe list
     recipes = map(lambda recipe: recipe.rstrip(), recipe_file.readlines())
-    recipe_id=1
-    for recipe in recipes:
-      if argc == 3:
-        if int(get_recipe_id) == recipe_id: 
-          print str(recipe_id)+': '+recipe
-      else:
-        print str(recipe_id)+': '+recipe
-      recipe_id+=1
     recipe_file.close()
   except IOError:
     print 'IOError: file `%s` does not exist' % recipe_filename
 
+  recipe_id=1
+  for recipe in recipes:
+    if argc == 3:
+      if int(get_recipe_id) == recipe_id:
+        print str(recipe_id)+': '+recipe
+    else:
+      print str(recipe_id)+': '+recipe
+    recipe_id+=1
 
 if __name__ == '__main__':
   main()
