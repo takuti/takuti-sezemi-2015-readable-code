@@ -8,8 +8,6 @@ def main():
     sys.exit('Error: `$ python recipe.py ${recipe-filename} ${recipe_id (optional)}`')
 
   recipe_filename = sys.argv[1]
-  if argc ==3:
-    get_recipe_id = sys.argv[2]
 
   # read/print all recipes from recipe-data-file
   try:
@@ -20,14 +18,10 @@ def main():
   except IOError:
     print 'IOError: file `%s` does not exist' % recipe_filename
 
-  recipe_id=1
-  for recipe in recipes:
-    if argc == 3:
-      if int(get_recipe_id) == recipe_id:
-        print str(recipe_id)+': '+recipe
-    else:
-      print str(recipe_id)+': '+recipe
-    recipe_id+=1
+  # print recipe(s) based on the given argument: all recipes or one selected recipe
+  recipe_ids = range(1, len(recipes)+1) if argc == 2 else [int(sys.argv[2])]
+  for recipe_id in recipe_ids:
+    print str(recipe_id)+': '+recipes[recipe_id-1]
 
 if __name__ == '__main__':
   main()
