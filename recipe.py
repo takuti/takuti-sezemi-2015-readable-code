@@ -21,7 +21,7 @@ def main():
   # print recipe(s) based on the given argument: all recipes or one selected recipe
   recipe_ids = range(1, len(recipes)+1) if argc == 2 else [int(sys.argv[2])]
   for recipe_id in recipe_ids:
-    print str(recipe_id)+': '+recipes[recipe_id-1]
+    print '%d: %s' % (recipe_id, recipes[recipe_id-1])
 
 if __name__ == '__main__':
   main()
