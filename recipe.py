@@ -5,7 +5,7 @@ import sys
 def main():
   argc = len(sys.argv)
   if argc < 2 or argc >3:
-    sys.exit('Error: `$ python recipe.py ${recipe-filename}` (recipe_id)')
+    sys.exit('Error: `$ python recipe.py ${recipe-filename} ${recipe_id (optional)}`')
 
   recipe_filename = sys.argv[1]
   if argc ==3:
